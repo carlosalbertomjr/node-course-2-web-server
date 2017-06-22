@@ -37,16 +37,16 @@ hbs.registerHelper('screamIt', (text) => {
     return text.toUpperCase();
 })
 
-app.get('/', (req, res) => {
-    //    res.send('<h1>Hello Express!</h1>');
-    res.send({
-        name: 'Carlos Alberto',
-        likes: [
-            'Eletrônica',
-            'Tecnologia'
-        ]
-    })
-});
+//app.get('/', (req, res) => {
+//    //    res.send('<h1>Hello Express!</h1>');
+//    res.send({
+//        name: 'Carlos Alberto',
+//        likes: [
+//            'Eletrônica',
+//            'Tecnologia'
+//        ]
+//    })
+//});
 
 var modelAbout = {
     pageTitle: 'About Page',
@@ -57,11 +57,15 @@ var modelHome = {
     welcomeMessage: 'Hi and welcome'
 };
 
+var modelProjects ={
+  pageTitle: 'Projects'  
+};
+
 app.get('/about', (req, res) => {
     res.render('about.hbs', modelAbout);
 });
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     res.render('home.hbs', modelHome);
 });
 
@@ -71,8 +75,12 @@ app.get('/bad', (req, res) => {
     });
 });
 
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', modelProjects);
+});
+
 app.listen(port, () => {
-    console.log('Server is up on port 3000');
+    console.log(`Server is up on port ${port}`);
 });
 
 
